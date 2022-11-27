@@ -48,6 +48,9 @@ const Item = styled.div`
   padding: 8px 0;
   gap: 20px;
   cursor: pointer;
+  &:hover {
+    background-color: ${({ theme }) => theme.soft};
+  }
 `;
 const Hr = styled.hr`
   margin: 15px 0;
@@ -107,11 +110,13 @@ const Menu = ({ theme, setTheme }) => {
         <Hr />
         <Login>
           Sign in to like videos, comment, and subscribe.
-          <Button>
-            {" "}
-            <AccountCircleOutlinedIcon />
-            SIGN IN
-          </Button>
+          <Link to="signin" style={{ textDecoration: "none" }}>
+            <Button>
+              {" "}
+              <AccountCircleOutlinedIcon />
+              SIGN IN
+            </Button>
+          </Link>
         </Login>
         <Hr />
         <Title>BEST OF HAIRTUBE</Title>

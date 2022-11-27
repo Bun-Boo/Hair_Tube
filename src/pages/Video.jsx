@@ -4,6 +4,8 @@ import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownOffAltOutlinedIcon from "@mui/icons-material/ThumbDownOffAltOutlined";
 import ReplyOutlinedIcon from "@mui/icons-material/ReplyOutlined";
 import AddTaskOutlinedIcon from "@mui/icons-material/AddTaskOutlined";
+import Comments from "../components/Comments";
+import VideoCard from "../components/VideoCard";
 
 const Container = styled.div`
   display: flex;
@@ -40,9 +42,58 @@ const Button = styled.div`
   gap: 5px;
   cursor: pointer;
 `;
+
+const Hr = styled.hr`
+  margin: 15px 0px;
+  border: 0.5px solid ${({ theme }) => theme.soft};
+`;
 const Recomment = styled.div`
   flex: 2;
 `;
+
+const Channel = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+const ChannelInfo = styled.div`
+  display: flex;
+  gap: 20px;
+`;
+
+const Image = styled.img`
+  min-width: 50px;
+  min-height: 50px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+`;
+const ChannelDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+  color: ${({ theme }) => theme.text};
+`;
+const ChannelName = styled.span`
+  font-weight: 500;
+`;
+const ChannelCounter = styled.span`
+  margin-top: 5px;
+  margin-bottom: 20px;
+  color: ${({ theme }) => theme.textSoft};
+  font-size: 12px;
+`;
+const Description = styled.p`
+  font-size: 14px;
+`;
+const Subscribe = styled.button`
+  background-color: #cc1a00;
+  font-weight: 500;
+  color: white;
+  height: max-content;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+`;
+
 const Video = () => {
   return (
     <Container>
@@ -76,8 +127,36 @@ const Video = () => {
             </Button>
           </Buttons>
         </Details>
+        <Hr />
+        <Channel>
+          <ChannelInfo>
+            <Image src="https://scontent.fhan14-3.fna.fbcdn.net/v/t39.30808-6/316836576_1468567860298707_8939126277331737844_n.jpg?stp=cp6_dst-jpg&_nc_cat=102&ccb=1-7&_nc_sid=5cd70e&_nc_ohc=XYwY5MJzTWkAX_iak_w&_nc_ht=scontent.fhan14-3.fna&oh=00_AfB--8asSraSeqRr_10IeAVhDttz33CJiDYhAUOTgHB19A&oe=6387CD6A" />
+            <ChannelDetails>
+              <ChannelName>Hair</ChannelName>
+              <ChannelCounter>500k Subscribe</ChannelCounter>
+              <Description>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quam
+                accusantium ipsam harum reprehenderit? Omnis eius, itaque,
+                nesciunt maxime eos nobis consequatur soluta impedit eaque ullam
+                qui ipsum. Quo, ex alias.
+              </Description>
+            </ChannelDetails>
+          </ChannelInfo>
+          <Subscribe>SUBSCRIBE</Subscribe>
+        </Channel>
+        <Hr />
+        <Comments />
       </Content>
-      <Recomment>Recomment</Recomment>
+      <Recomment>
+        <VideoCard type="sm" />
+        <VideoCard type="sm" />
+        <VideoCard type="sm" />
+        <VideoCard type="sm" />
+        <VideoCard type="sm" />
+        <VideoCard type="sm" />
+        <VideoCard type="sm" />
+        <VideoCard type="sm" />
+      </Recomment>
     </Container>
   );
 };
