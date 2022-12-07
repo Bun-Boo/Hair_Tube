@@ -18,6 +18,8 @@ import FlagOutlinedIcon from "@mui/icons-material/FlagOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import SettingsBrightnessOutlinedIcon from "@mui/icons-material/SettingsBrightnessOutlined";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 const Container = styled.div`
   flex: 1;
   background-color: ${({ theme }) => theme.bgLight};
@@ -77,6 +79,8 @@ const Title = styled.h2`
   margin-bottom: 20px;
 `;
 const Menu = ({ theme, setTheme }) => {
+  const { currentUser } = useSelector((state) => state.user);
+
   return (
     <Container>
       <Wrapper>
@@ -86,18 +90,27 @@ const Menu = ({ theme, setTheme }) => {
             HairTube
           </Logo>
         </Link>
-        <Item>
-          <HomeIcon />
-          Home
-        </Item>
-        <Item>
-          <ExploreOutlinedIcon />
-          Explore
-        </Item>
-        <Item>
-          <SubscriptionsOutlinedIcon />
-          Subscriptions
-        </Item>
+        <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+          <Item>
+            <HomeIcon />
+            Home
+          </Item>
+        </Link>
+        <Link to="trends" style={{ textDecoration: "none", color: "inherit" }}>
+          <Item>
+            <ExploreOutlinedIcon />
+            Explore
+          </Item>
+        </Link>
+        <Link
+          to="subscriptions"
+          style={{ textDecoration: "none", color: "inherit" }}
+        >
+          <Item>
+            <SubscriptionsOutlinedIcon />
+            Subscriptions
+          </Item>
+        </Link>
         <Hr />
         <Item>
           <VideoLibraryOutlinedIcon />
@@ -108,17 +121,21 @@ const Menu = ({ theme, setTheme }) => {
           History
         </Item>
         <Hr />
-        <Login>
-          Sign in to like videos, comment, and subscribe.
-          <Link to="signin" style={{ textDecoration: "none" }}>
-            <Button>
-              {" "}
-              <AccountCircleOutlinedIcon />
-              SIGN IN
-            </Button>
-          </Link>
-        </Login>
-        <Hr />
+        {!currentUser && (
+          <>
+            <Login>
+              Sign in to like videos, comment, and subscribe.
+              <Link to="signin" style={{ textDecoration: "none" }}>
+                <Button>
+                  {" "}
+                  <AccountCircleOutlinedIcon />
+                  SIGN IN
+                </Button>
+              </Link>
+            </Login>
+            <Hr />
+          </>
+        )}
         <Title>BEST OF HAIRTUBE</Title>
         <Item>
           <LibraryMusicOutlinedIcon />
